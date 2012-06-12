@@ -194,6 +194,21 @@ void bot_stop_timed(TimerInformation* Sender)
   bot_stop();
 }
 
+
+void onModeChange(newmode)
+{
+##onModeChange##
+}
+
+void changeToMovingMode(TimerInformation* Sender){
+   onModeChange("moving");
+}
+
+void changeToSearchingMode(TimerInformation* Sender){
+  onModeChange("searching");
+}
+
+
 void onChange(AnalogPortInformation* Sender)
 {
   Serial.print("onChange ");
