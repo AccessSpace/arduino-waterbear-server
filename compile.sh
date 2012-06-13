@@ -13,7 +13,7 @@ while [ 0  -lt 1 ]; do
 	  if [ -e "$sScriptFile" ]
 	  then
 	    touch "$sLock"
-	    scons upload ARDUINO_BOARD=uno  ARDUINO_PORT=/dev/ttyACM0
+	    scons upload ARDUINO_BOARD=uno  ARDUINO_PORT=/dev/ttyACM0 EXTRA_LIB=/home/martyn/public_html/arduino-waterbear-server/external/ebl-arduino
 	    mv "$sScriptFile" "../old-$sScriptFile"
 	    rm "$sLock"
 	  fi

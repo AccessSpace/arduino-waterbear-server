@@ -8,8 +8,12 @@ $sOutputFolder = "/tmp/output/";
 if(!file_exists($sOutputFolder))
 {
 	mkdir($sOutputFolder);
-	copy("external/arscons/SConstruct", $sOutputFolder."SConstruct");
+	#copy("external/arscons/SConstruct", $sOutputFolder."SConstruct");
+}
 
+#if(!file_exists($sOutputFolder."SConstruct"))
+{
+	copy("external/arscons/SConstruct", $sOutputFolder."SConstruct");
 }
 
 
