@@ -195,9 +195,9 @@ void bot_stop_timed(TimerInformation* Sender)
 }
 
 
-void onModeChange(newmode)
+void onModeChange(String newmode)
 {
-##onModeChange##
+//onModeChange//
 }
 
 void changeToMovingMode(TimerInformation* Sender){
