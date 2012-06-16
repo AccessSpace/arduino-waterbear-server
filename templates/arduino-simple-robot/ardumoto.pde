@@ -219,21 +219,15 @@ void onChange(AnalogPortInformation* Sender)
 //onChange//
 }
 
+
 void onDown(ButtonInformation* Sender)
 {
   Serial.println("onDown");
   Serial.println(Sender->pin);
-  
-  if (Sender->pin == start_button_pin && current_prog_state == "init")
+  if(current_prog_state != "init")
   {
-    Serial.println("starting");
-    current_prog_state = "starting";
-    TimedEvent.addDelayed(start_button_pause, onStartTime);
-    LedControl.stopBlink(LED_Green_pin);
-    LedControl.startBlink(LED_Green_pin, 100);
+    //onDown//
   }
-  
-//onDown//
 }
 
 void onUp(ButtonInformation* Sender)
@@ -285,6 +279,14 @@ void start_bot()
   AnalogEvent.addAnalogPort(light_sensor_1_pin, onChange, 10);
   AnalogEvent.addAnalogPort(light_sensor_2_pin, onChange, 10);
   
+  ButtonEvent.addButton(push_button_pin,       //button pin
+                        onDown,   //onDown event function
+                        onUp,     //onUp event function
+                        onHold,   //onHold event function
+                        1000,     //hold time in milliseconds
+                        onDouble, //onDouble event function
+                        200);     //double time interval
+  
   
   ButtonEvent.addButton(bumper_1_pin,       //button pin
                         onDown,   //onDown event function
@@ -319,6 +321,22 @@ void onStartTime(TimerInformation* Sender)
 {
   Serial.println("onStartTime");
   start_bot();
+}
+
+
+
+void onStartDown(ButtonInformation* Sender)
+{
+  Serial.println("onStartDown");
+  
+  if (Sender->pin == start_button_pin && current_prog_state == "init")
+  {
+    Serial.println("starting");
+    current_prog_state = "starting";
+    TimedEvent.addDelayed(start_button_pause, onStartTime);
+    LedControl.stopBlink(LED_Green_pin);
+    LedControl.startBlink(LED_Green_pin, 100);
+  }
 }
 
 void loop()
@@ -356,7 +374,9 @@ void setup()
   //setup//
   
   ButtonEvent.addButton(start_button_pin,       //button pin
-                        onDown,   //onDown event function
+                        onStartDown,   //onStartDown event function 
+                        //change to another event but use status to check 
+                        //which runs and the other should be null
                         onUp,     //onUp event function
                         onHold,   //onHold event function
                         1000,     //hold time in milliseconds
