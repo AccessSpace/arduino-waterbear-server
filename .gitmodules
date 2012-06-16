@@ -1,0 +1,3 @@
+[submodule "external/ebl-arduino"]
+	path = external/ebl-arduino
+	url = git@github.com:stretchyboy/ebl-arduino.git
