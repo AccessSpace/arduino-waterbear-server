@@ -1,3 +1,6 @@
 [submodule "external/ebl-arduino"]
 	path = external/ebl-arduino
 	url = git@github.com:stretchyboy/ebl-arduino.git
+[submodule "external/arscons"]
+	path = external/arscons
+	url = git@github.com:stretchyboy/arscons.git
