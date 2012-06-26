@@ -1,19 +1,28 @@
+sDefaultPort="/dev/ttyACM0"
+sDefaultBoard="uno"
 
-ard="/dev/ttyACM0"
+
+sPort=${1:-$sDefaultPort}
+sBoard=${2:-$sDefaultBoard}
+
+
+sServerDir="$( cd "$( dirname "$0" )" && pwd )" 
 sScriptFile="output.ino";
 sOutputFolder="/tmp/output/";
 sLock="lock.txt"
 
 cd "$sOutputFolder"
+rm "$sLock"
+
 while [ 0  -lt 1 ]; do
     if [ ! -e "$sLock" ]
     then
-	if [ -e "$ard" ]
+	if [ -e "$sPort" ]
 	then
 	  if [ -e "$sScriptFile" ]
 	  then
 	    touch "$sLock"
-	    scons upload ARDUINO_BOARD=uno  ARDUINO_PORT=/dev/ttyACM0 EXTRA_LIB=/home/martyn/public_html/arduino-waterbear-server/external/ebl-arduino
+	    scons upload ARDUINO_BOARD=$sBoard  ARDUINO_PORT=$sPort EXTRA_LIB="$sServerDir/external/ebl-arduino"
 	    mv "$sScriptFile" "../old-$sScriptFile"
 	    rm "$sLock"
 	  fi
