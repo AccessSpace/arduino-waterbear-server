@@ -21,16 +21,19 @@ int dir_b = 13;  //direction control for motor outputs 3 and 4 is on digital pin
 const int ir_distance_1_pin  = A0;   // IR distance sensor 1
 const int ir_distance_2_pin  = A1; // IR distance sensor 2
 const int light_sensor_1_pin = A2; // Light Sensor 1
-const int light_sensor_2_pin = A3; // Light Sensor 1
+const int light_sensor_2_pin = A4; // Light Sensor 2 //middle sensor currently not wired in
 const int LED_Green_pin    = 10; // LEDs
 const int LED_Under_pin    = 9; // LEDs
 
+const String moving = "moving";
+
+const String searching = "searching";
 
 const int start_button_pin   = 4;
 const int push_button_pin    = 4;
 const int cutoff_pin         = 5;
 const int bumper_1_pin       = 6;  // Bumper Button
-
+const int bumper_2_pin       = 4;
 
 //Variables
 long   iSchedTime              = 0;
@@ -38,7 +41,9 @@ const  long start_button_pause = 1000;
 
 String current_motion_state    = "stop";
 String current_prog_state      = "init";
-int    speed_output_min        = 170;
+String current_mode            = "init";
+
+int    speed_output_min        = 210;
 int    speed_output_max        = 250;
 int    speed_setting_max       = 10;
 int    speed_setting_current   = 1;
@@ -197,6 +202,7 @@ void bot_stop_timed(TimerInformation* Sender)
 
 void onModeChange(String newmode)
 {
+current_mode = newmode;
 //onModeChange//
 }
 
