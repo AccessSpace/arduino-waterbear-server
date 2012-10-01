@@ -5,7 +5,8 @@ $sBase = 'templates/';
 $aTemplateNames = array(
 	'ardumoto' => 'arduino-simple-robot/ardumoto.pde',
 	'servos' => 'arduino-simple-robot/servos.pde',
-	'adafruitmotorshield'=>'arduino-simple-robot/adafruit-motorshield.pde'
+	'adafruitmotorshield'=>'arduino-simple-robot/adafruit-motorshield.pde',
+	'arduino'=>'arduino/default.pde'
 	);
 
 $aTemplates = array();
