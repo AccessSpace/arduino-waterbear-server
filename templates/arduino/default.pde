@@ -6,7 +6,11 @@ Servo myservo;  // create servo object to control a servo
 int pos = 0;    // variable to store the servo position 
 const int LED_Green_pin    = 10; // LEDs
 const int push_button_pin    = 4;
-const int servo_pin = 9;
+const int servo_pin = 11;
+const int pot_pin = A0;
+//Global Varibles 
+//globals//
+
 
 void dispense()
 {
@@ -22,6 +26,10 @@ void dispense()
   }
 }
 
+//Defintions of Broadcasts
+//def//
+
+
 void loop()
 {    
   //any//                      
@@ -32,12 +40,12 @@ void setup()
 { 
   Serial.begin(9600);
   Serial.println("setup");
+
+  myservo.attach(servo_pin);
   
-    myservo.attach(servo_pin);
-    
-    pinMode(LED_Green_pin, OUTPUT);
-    pinMode(push_button_pin, INPUT);  
-  
+  pinMode(LED_Green_pin, OUTPUT);
+  pinMode(push_button_pin, INPUT);  
+
   //setup//
 }
 
