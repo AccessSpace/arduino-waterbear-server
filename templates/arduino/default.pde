@@ -14,6 +14,11 @@ const int pot_pin = A0;
 
 void dispense()
 {
+  myservo.write(180);              // tell servo to go to 180 degrees 
+  delay(1000);
+  myservo.write(0);              // tell servo to go to 0 degrees 
+  
+  /*
   for(pos = 0; pos < 180; pos += 1)  // goes from 0 degrees to 180 degrees 
   {                                  // in steps of 1 degree 
     myservo.write(pos);              // tell servo to go to position in variable 'pos' 
@@ -24,6 +29,7 @@ void dispense()
     myservo.write(pos);              // tell servo to go to position in variable 'pos' 
     delay(15);                       // waits 15ms for the servo to reach the position 
   }
+  */
 }
 
 //Defintions of Broadcasts
@@ -42,6 +48,7 @@ void setup()
   Serial.println("setup");
 
   myservo.attach(servo_pin);
+  myservo.write(0); 
   
   pinMode(LED_Green_pin, OUTPUT);
   pinMode(push_button_pin, INPUT);  
