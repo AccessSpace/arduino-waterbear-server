@@ -4,10 +4,12 @@ Servo myservo;  // create servo object to control a servo
                 // a maximum of eight servo objects can be created 
  
 int pos = 0;    // variable to store the servo position 
-const int LED_Green_pin    = 8; // LEDs
-const int push_button_pin  = 12;
-const int servo_pin        = 3;
+const int LED_Green_pin    = 9; // LEDs
+const int push_button_pin  = 4;
+const int servo_pin        = 5;
 const int pot_pin          = A0;
+
+
 //Global Varibles 
 //globals//
 
@@ -26,7 +28,7 @@ void dispense()
 
 void loop()
 { 
-  //loop//    
+  //mainloop//    
 }
 
 
